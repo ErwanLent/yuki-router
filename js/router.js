@@ -17,6 +17,11 @@ class Router {
 		this._onUrlChange();
 	}
 
+	replaceState(state, title, route) {
+		window.history.replaceState(state, title, route);
+		this._onUrlChange();
+	}	
+
 	register(path, callback) {
 		const route = {
 			path: this._trimPath(path),
