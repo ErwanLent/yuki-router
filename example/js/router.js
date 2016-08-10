@@ -13,6 +13,10 @@ class Router {
 	   Public Functions
 	   ========================================================================== */
 
+	pageLoad() {
+		this._onUrlChange();
+	}
+
 	pushState(state, title, route) {
 		window.history.pushState(state, title, route);
 		this._onUrlChange();
@@ -40,12 +44,6 @@ class Router {
 		const urlVariables = {};
 		const trimmedPathName = this._getTrimmedPathName();
 		const splitPath = trimmedPathName.split('/');
-
-		// install/123456 				[install, 123456]
-		// install/:installId 		  	[install, :installId]
-
-		// install/123456/charts		[install, 123456, charts]
-		// install/:installId/charts	[install, :installId, charts]
 
 		routesLoop: 
 		for (let route of this.routes) {
