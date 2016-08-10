@@ -31,15 +31,47 @@ class Router {
 	   ========================================================================== */
 
 	_onUrlChange() {
-
+		const urlVariables = {};
 		const trimmedPathName = this._getTrimmedPathName();
-		console.log(trimmedPathName);
+		const splitPath = trimmedPathName.split('/');
 
+		// install/123456 				[install, 123456]
+		// install/:installId 		  	[install, :installId]
 
+		// install/123456/charts		[install, 123456, charts]
+		// install/:installId/charts	[install, :installId, charts]
+
+		routesLoop: 
+		for (let route of this.routes) {
+			const splitRoutePath = this._trimPath(route.path).split('/');
+
+			if (splitPath.length != splitRoutePath.length) {
+				continue;
+			}
+
+			for (let routePathIndex = 0; routePathIndex < splitRoutePath.length; routePathIndex++) {
+				const routePathElement = splitRoutePath[routePathIndex];
+
+				if (routePathElement[0] == ':') {
+
+					const urlVariableKey = routePathElement.substring(1);
+
+					urlVariables[urlVariableKey] = splitPath[routePathIndex];
+
+				} else if (routePathElement != splitPath[routePathIndex]) {
+					continue routesLoop;
+				}
+			}
+
+			// Route found
+			console.log('route found');
+			route.callback(urlVariables);
+			break;
+		}
 	}
 
 	_getTrimmedPathName() {
-		return(location.pathname);
+		return this._trimPath(location.pathname);
 	}
 
 	_trimPath(pathName) {

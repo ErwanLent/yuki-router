@@ -1,5 +1,3 @@
-const router = new Router();
-
 $(document).ready(() => {
 
 	$(window).bind('hashchange', function() {
