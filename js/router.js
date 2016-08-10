@@ -47,7 +47,8 @@ class Router {
 		// install/123456/charts		[install, 123456, charts]
 		// install/:installId/charts	[install, :installId, charts]
 
-		routesLoop: for (let route of this.routes) {
+		routesLoop: 
+		for (let route of this.routes) {
 			const splitRoutePath = this._trimPath(route.path).split('/');
 
 			if (splitPath.length != splitRoutePath.length) {
