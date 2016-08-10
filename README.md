@@ -40,6 +40,8 @@ OR
 router.replaceState('', 'Default Section', '/home')
 ```
 
+### Example
+http://107.170.236.35:8080/home
 
 ### Distribution
 The minified version has been transpiled with Babel for compatibility with older browsers.
