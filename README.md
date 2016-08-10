@@ -1,8 +1,8 @@
 # Yuki Router
-Lightweight router made for web inspired by Express.
+Lightweight client-sided router made for web inspired by Express. Dependency free.
 
 ### Overview
-I wanted a simple, lightweight solution to web routing with callbacks. Simply register a route path with a callback:
+I wanted a simple, lightweight solution to web routing that was easy to integrate into existing projects. Simply register a route path with a callback:
 	
 ```javascript
 const router = new Router();
@@ -12,7 +12,7 @@ router.register('/install/:installId', onInstallRoute);
 router.register('/place', onPlaceRoute);
 ```
 
-Make sure to define your functions before you register your routes.
+Make sure to define your methods before you register your routes.
 
 ```javascript
 function onHomeRoute() {
