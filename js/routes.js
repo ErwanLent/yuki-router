@@ -1,6 +1,5 @@
 const router = new Router();
 
-router.register('/install/:installId', (urlVariables) => {
-	console.log('callback called');
-	console.log(urlVariables);
-});
+router.register('/home', onHomeRoute);
+router.register('/install/:installId', onInstallRoute);
+router.register('/place', onPlaceRoute);

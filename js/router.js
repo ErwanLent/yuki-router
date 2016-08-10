@@ -64,7 +64,6 @@ class Router {
 			}
 
 			// Route found
-			console.log('route found');
 			route.callback(urlVariables);
 			break;
 		}
